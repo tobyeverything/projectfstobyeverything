@@ -48,19 +48,18 @@ function LoginPageInner() {
 
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
-      <div className="relative hidden lg:block">
-        <img
-          src="/hero-bg.png"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/20" />
+      <div className="relative hidden overflow-hidden lg:block">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/40 to-accent/60" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15)_0%,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.1)_0%,transparent_50%)]" />
+        <div className="absolute -left-20 -top-20 size-80 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 size-96 rounded-full bg-primary/20 blur-3xl" />
         <div className="relative flex h-full flex-col justify-end p-12">
           <blockquote className="max-w-md">
-            <p className="font-serif text-2xl leading-relaxed text-foreground/90 italic">
+            <p className="font-serif text-2xl leading-relaxed text-white/90 italic">
               &ldquo;Movement should be intentional, accessible, and transformative.&rdquo;
             </p>
-            <footer className="mt-4 text-sm text-muted-foreground">{siteConfig.name}</footer>
+            <footer className="mt-4 text-sm text-white/60">{siteConfig.name}</footer>
           </blockquote>
         </div>
       </div>
