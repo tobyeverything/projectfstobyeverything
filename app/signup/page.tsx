@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ArrowRight, Loader2 } from "lucide-react"
@@ -11,6 +11,14 @@ import { Label } from "@/components/ui/label"
 import { siteConfig } from "@/lib/site-config"
 
 export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-svh items-center justify-center"><Loader2 className="size-4 animate-spin" /></div>}>
+      <SignupPageInner />
+    </Suspense>
+  )
+}
+
+function SignupPageInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const redirect = searchParams.get("redirect") ?? "/book"

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useMemo } from "react"
+import { Suspense, useEffect, useState, useMemo } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, CreditCard, Loader2, AlertCircle } from "lucide-react"
@@ -9,6 +9,14 @@ import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site-config"
 
 export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-svh items-center justify-center"><Loader2 className="size-8 animate-spin text-primary" /></div>}>
+      <CheckoutPageInner />
+    </Suspense>
+  )
+}
+
+function CheckoutPageInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const packageId = searchParams.get("package")

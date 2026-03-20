@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useMemo, useCallback } from "react"
+import { Suspense, useEffect, useState, useMemo, useCallback } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Calendar, CreditCard, Package as PackageIcon, Loader2 } from "lucide-react"
@@ -14,6 +14,14 @@ const STEPS = ["Package", "Time", "Review"] as const
 type Step = (typeof STEPS)[number]
 
 export default function BookPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-svh items-center justify-center"><Loader2 className="size-8 animate-spin text-primary" /></div>}>
+      <BookPageInner />
+    </Suspense>
+  )
+}
+
+function BookPageInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const preselectedPackage = searchParams.get("package")
